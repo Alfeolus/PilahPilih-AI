@@ -1,0 +1,33 @@
+# Abaikan folder virtual environment Python
+venv/
+.venv/
+env/
+/env/
+
+# Abaikan folder dataset
+dataset/
+dataset_sampah/
+hasil_training/
+
+# Abaikan file cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Abaikan file spesifik IDE/Editor
+.vscode/
+.idea/
+*.swp
+
+# Abaikan konfigurasi Git
+.git/
+.gitignore
+
+# Abaikan file Docker itu sendiri
+Dockerfile
+.dockerignore
+
+# Abaikan file sistem operasi
+.DS_Store
+Thumbs.db

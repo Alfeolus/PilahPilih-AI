@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIlahPilih - Smart Waste Classifications</title>
+    <link rel="icon" href="{{ url_for('static', filename='PilahPilih.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='PilahPilih.png') }}" alt="Recycle Logo" class="logo">
+        <p class="tagline">Solutions For a Cleaner Future!</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="toggle-buttons">
+            <button id="mode-camera" class="btn active">🎥 Camera Mode</button>
+            <button id="mode-upload" class="btn">📤 Upload Picture</button>
+        </div>
+
+        <div class="detection-section">
+            <div id="camera-view" class="active-mode">
+                <div class="video-wrapper">
+                    <video id="webcam" width="640" height="480" autoplay muted></video>
+                    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+                    <div id="prediction-overlay" class="prediction-info">
+                        <p>Prediction: <span id="prediction-text">Loading..</span></p>
+                        <p>Confidence Level: <span id="confidence-text">N/A</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="upload-view" class="inactive-mode">
+                <div class="upload-area">
+                    <input type="file" id="image-upload" accept="image/*" style="display:none;">
+                    <button id="select-image-btn" class="btn upload-btn">Upload Picture</button>
+                    <img id="uploaded-image-preview" src="#" alt="Pratinjau Gambar" style="display:none;">
+                    <button id="detect-uploaded-btn" class="btn detect-btn" style="display:none;">Detect Picture!</button>
+                </div>
+                <div id="upload-prediction-info" class="prediction-info" style="display:none;">
+                    <p>Prediction: <span id="uploaded-prediction-text"></span></p>
+                    <p>Confidence Level: <span id="uploaded-confidence-text"></span></p>
+                </div>
+            </div>
+            
+            <div id="prob-distribution" class="prob-info">
+                <h3>Probability Distribution:</h3>
+                <ul id="prob-list"></ul>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <p>&copy; 2025 PilahPilih! Created with ❤️ to Protect Our World</p>
+        </div>
+    </div>
+
+    <script>
+        const classNames = {{ class_names | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
